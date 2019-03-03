@@ -13,7 +13,7 @@ module.exports = merge(common,{
                 test: /\.(png|svg|jpe?g|gif)$/,
                 use: [
                     { 
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
                             limit: 10240        //base64限制值10kb
                         }

@@ -267,7 +267,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
         ]
     }
 ```
-## 七、为图片资源加上`file-loader`(上面已经安装过)
+## 七、加载图片资源并优化  用到的`file-loader`(上面已经安装过)
 1. `webpack.dev.js`,`webpack.prod.js`都增加
 ```js
 {
@@ -277,7 +277,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
     ]
 }
 ```
-2. 还可以对图片资源进行优化,压缩图片优化用到了`image-webpack-loader`  
+2. 对图片资源进行优化,压缩图片优化用到了`image-webpack-loader`  
 base64转换用到了`url-loader`,所以结合在一起安装     
 注：`url-loader`的执行返回默认就是`file-loader`所以base64那一步把`file-loader`换成`url-loader`,然后配上相应的参数。
 ```bash
@@ -289,9 +289,9 @@ yarn add image-webpack-loader url-loader -D
     test: /\.(png|svg|jpe?g|gif)$/,
     use: [
         { 
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
-                limit: 10000
+                limit: 10240       //base64限制值10kb
             }
         },
         {
@@ -320,4 +320,28 @@ yarn add image-webpack-loader url-loader -D
         }
     ]
 },
+```
+
+## 八、开发服务器`webpack-dev-server`
+1. 安装：`yarn add webpack-dev-server -D`
+2. 配置`webpack.dev.js`  [具体配置可参照](https://www.webpackjs.com/configuration/dev-server/)
+```js
+devtool: 'inline-source-map',
+devServer: {
+    contentBase: path.join(__dirname, "../dist"),
+    compress: true,      //一切服务都启用gzip 压缩
+    hot: true,//启用模块热替换特性，这个需要配合：webpack.HotModuleReplacementPlugin插件
+    host: '0.0.0.0', //指定一个host,默认是localhost,如果想开发的时候外部能访问,设置成0.0.0.0
+    port: 8080,
+    publicPath:'/',
+    proxy: {
+        "/api": {
+            target: 'http://192.168.0.167:8080'
+        }
+    }
+},
+```
+3. 修改`package.json`中的脚本
+```js
+"dev": "webpack-dev-server --open --config config/webpack.dev.js",
 ```
