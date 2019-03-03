@@ -345,3 +345,18 @@ devServer: {
 ```js
 "dev": "webpack-dev-server --open --config config/webpack.dev.js",
 ```
+## 九、js启用babel转码
+1. 安装：`yarn add babel-core babel-loader babel-preset-env -D`
+2. 修改`webpack.dev.js`
+```js
+module: {
+    rules: [
+        {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: ['babel-loader']
+        },
+        ...
+    ]
+}
+```
