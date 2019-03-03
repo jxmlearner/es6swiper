@@ -231,9 +231,39 @@ module: {
                     plugins: loader => [
                         require('autoprefixer')({browsers:['>0.15% in CN']})
                     ]
-                    } },
+                    } 
+                },
                 { loader: 'stylus-loader',options: {sourceMap: true} }
             ]}
         ]
     },
+```
+## 五、压缩样式
+1. 安装插件 `yarn add optimize-css-assets-webpack-plugin -D`
+2. 修改 `webpack.prod.js`
+```js
+const optimizeCss = require('optimize-css-assets-webpack-plugin')
+...
+
+    optimization: {
+        minimizer: [new optimizeCss()]
+    }
+```
+## 六、压缩js
+1. 安装插件 `yarn add uglifyjs-webpack-plugin -D`
+2. 修改 `webpack.prod.js`
+```js
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+...
+
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({     //压缩js
+                cache: true,
+                parallel: true,
+                sourceMap: true
+            }),
+            new optimizeCss()      //压缩css
+        ]
+    }
 ```
