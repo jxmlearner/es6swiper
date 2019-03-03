@@ -6,11 +6,25 @@ module.exports = merge(common,{
     devtool: 'inline-sourcemap',
     module: {
         rules:[
-            {test: /\.(css|styl)$/, use: [
-                'style-loader',
-                { loader:'css-loader',options: {sourceMap: true} },
-                { loader: 'stylus-loader',options: {sourceMap: true} }
-            ]}
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    { 
+                        loader: 'file-loader',
+                        options: {
+                            limit: 10240        //base64限制值10kb
+                        }
+                    }
+                ]
+            },
+            { 
+                test: /\.(css|styl)$/, 
+                use: [
+                    'style-loader',
+                    { loader:'css-loader',options: {sourceMap: true} },
+                    { loader: 'stylus-loader',options: {sourceMap: true} }
+                ]
+            }
         ]
     }
 })

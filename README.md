@@ -267,3 +267,57 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
         ]
     }
 ```
+## 七、为图片资源加上`file-loader`(上面已经安装过)
+1. `webpack.dev.js`,`webpack.prod.js`都增加
+```js
+{
+    test: /\.(png|svg|jpg|gif)$/,
+    use: [
+        'file-loader'
+    ]
+}
+```
+2. 还可以对图片资源进行优化,压缩图片优化用到了`image-webpack-loader`  
+base64转换用到了`url-loader`,所以结合在一起安装     
+注：`url-loader`的执行返回默认就是`file-loader`所以base64那一步把`file-loader`换成`url-loader`,然后配上相应的参数。
+```bash
+yarn add image-webpack-loader url-loader -D
+```
+对`webpack.prod.js`修改
+```js
+{
+    test: /\.(png|svg|jpe?g|gif)$/,
+    use: [
+        { 
+            loader: 'file-loader',
+            options: {
+                limit: 10000
+            }
+        },
+        {
+            loader: 'image-webpack-loader',
+            options: {
+                mozjpeg: {
+                    progressive: true,
+                    quality: 65
+                },
+                // optipng.enabled: false will disable optipng
+                optipng: {
+                    enabled: false,
+                },
+                pngquant: {
+                    quality: '65-90',
+                    speed: 4
+                },
+                gifsicle: {
+                    interlaced: false,
+                },
+                // the webp option will enable WEBP
+                webp: {
+                    quality: 75
+                }
+            }
+        }
+    ]
+},
+```

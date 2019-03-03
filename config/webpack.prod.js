@@ -8,20 +8,58 @@ module.exports = merge(common,{
     mode: 'production',
     devtool: 'sourcemap',
     module: {
-        rules:[
-            {test: /\.(css|styl)$/, use: [
-                MiniCssExtractPlugin.loader,
-                { loader:'css-loader',options: {sourceMap: true} },
-                { loader:'postcss-loader',options: {
-                    ident: 'postcss',
-                    sourceMap: true,
-                    plugins: loader => [
-                        require('autoprefixer')({browsers:['>0.15% in CN']})
-                    ]
-                    } 
-                },
-                { loader: 'stylus-loader',options: {sourceMap: true} }
-            ]}
+        rules: [
+            {
+                test: /\.(png|svg|jpe?g|gif)$/,
+                use: [
+                    { 
+                        loader: 'file-loader',
+                        options: {
+                            limit: 10240        //base64限制值10kb
+                        }
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                            // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: '65-90',
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            // the webp option will enable WEBP
+                            webp: {
+                                quality: 75
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(css|styl)$/, 
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    { loader:'css-loader',options: {sourceMap: true} },
+                    { loader:'postcss-loader',options: {
+                        ident: 'postcss',
+                        sourceMap: true,
+                        plugins: loader => [
+                            require('autoprefixer')({browsers:['>0.15% in CN']})
+                        ]
+                        } 
+                    },
+                    { loader: 'stylus-loader',options: {sourceMap: true} }
+                ]
+            }
         ]
     },
     plugins: [
