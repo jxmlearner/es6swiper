@@ -21,11 +21,6 @@ module.exports = merge(common,{
     module: {
         rules:[
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader']
-            },
-            {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
                     { 

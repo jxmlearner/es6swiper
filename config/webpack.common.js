@@ -10,6 +10,23 @@ module.exports = {
         filename: '[name].[hash:8].bundle.js',
         path: path.resolve(__dirname,'../dist')
     },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [
+                    'babel-loader',
+                    {
+                        loader: 'eslint-loader',
+                        options: {
+                            fix: true
+                        }
+                    }
+                ]
+            }
+        ]
+    },
     plugins: [ 
         new CleanWebpackPlugin(['dist'],{root: path.resolve(__dirname, '../')}),       
         new HtmlWebpackPlugin({
