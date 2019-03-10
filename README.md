@@ -432,3 +432,29 @@ module.exports = {
     }
 }
 ```
+
+## 十一、`webpack`的`resolve`选项
+`resolve`选项能设置模块如何被解析,常常会配置`resolve.alias` 创建 import 或 require 的别名，来确保模块引入变得更简单。    
+在`webpack.common.js`中添加
+```js
+resolve: {
+    alias: {
+        '@': path.resolve(__dirname,'../src'),
+        Utilities: path.resolve(__dirname, '../src/utilities/'),
+        Templates: path.resolve(__dirname, '../src/templates/')
+    }
+}
+```
+注意上面的@配置项, 当样式里面用 `@import`引入样式的时候要记得前面加个`符号
+如：
+```css  
+@import '~@/css/style.styl';
+```
+## 十二、加载字体
+```js
+{
+    test: /\.(woff|woff2|eot|ttf|otf)$/,
+    use: [ 'file-loader' ]
+}
+```
+

@@ -4,7 +4,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
     entry: {
-        index: path.resolve(__dirname,'../src/index.js')
+        index: path.resolve(__dirname,'../src/index.js'),
+        mi: path.resolve(__dirname,'../src/mi.js')
     },
     output: {
         filename: '[name].[hash:8].bundle.js',
@@ -24,6 +25,10 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [ 'file-loader' ]
             }
         ]
     },
@@ -32,6 +37,17 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: '首页',
             template: 'index.html'
+        }),        
+        new HtmlWebpackPlugin({
+            title: '小米官网焦点图制作',
+            template: 'mi.html'
         })        
-    ]
+    ],
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname,'../src'),
+            Utilities: path.resolve(__dirname, '../src/utilities/'),
+            Templates: path.resolve(__dirname, '../src/templates/')
+        }
+    }
 }
