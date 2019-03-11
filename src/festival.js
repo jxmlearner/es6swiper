@@ -1,7 +1,7 @@
 import Swiper from 'swiper' // swiper模块
 
 import 'swiper/dist/css/swiper.css' // swiper的样式
-import './assets/css/festival.css'
+import './assets/css/festival.styl'
 
 new Swiper('.swiper-container', {
   direction: 'vertical',

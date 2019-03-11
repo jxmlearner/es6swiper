@@ -539,3 +539,40 @@ rules: [
     "presets": ["env"]
 }
 ```
+
+## 十六、移动端适配方案
+```html
+<script>
+    document.querySelector('html').style.fontSize = window.screen.width / 20 +'px'
+    window.onresize=function() {
+        document.querySelector('html').style.fontSize = window.screen.width / 20 +'px'
+    }
+</script>
+```
+通过stylus的 mixin来计算宽高
+```css
+// 被平均分配成多少份->用于计算根html的fontSize
+rNum = 20
+dValue = 640/rNum     // 640是设计稿的宽度(根据设计稿而来)
+
+// 将某个像素值转换成rem值  -> 这是函数
+p2r(px)
+  return (px/dValue)*1rem
+
+// 宽度和高度转换成rem 的混入
+whRem(w,h)
+  width: p2r(w);
+  height: p2r(h);
+
+// 设置背景图片,并将元素居中
+bgc(imgurl,width)
+  background: url(imgurl) no-repeat center / 100% 100%;
+  position: absolute;
+  left: 50%;  
+  margin-left: p2r(-1*width/2); // 这里使用margin-left来实现 左右居中目的是为了后面动画中要使用transform来改变元素
+
+// 设置图片背景,不考虑元素居中
+bg(imgurl)
+  background: url(imgurl) no-repeat center / 100% 100%;
+  position: absolute;
+```

@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>端午节</title>
+    <script>
+        document.querySelector('html').style.fontSize = window.screen.width / 20 +'px'
+        window.onresize=function() {
+            document.querySelector('html').style.fontSize = window.screen.width / 20 +'px'
+        }
+    </script>
 </head>
 <body>
     <div class="swiper-container">

@@ -1,3 +1,5 @@
+@import './common.styl'
+
 *{margin: 0; padding: 0;}
 html,body {height: 100%;}
 body {font-family: "microsoft yahei";}
@@ -27,6 +29,39 @@ img {
     opacity: 1;
 }
 
+.swiper-slide>img {
+    position: absolute;
+}
+/*第一屏*/
+.page1 .flower {  /*花*/
+    left: 0;
+    top: 0;
+    whRem(315,324)
+    z-index: 2
+}
+.page1 .s1 {
+    whRem(640,467)
+    left:0px;
+    top:p2r(300);
+    z-index:1;
+}
+.page1 .s1-t1 {
+    width:60px;
+    height:110px;
+    left:220px;
+    top:185px;
+    z-index:3;
+}
+.page1 .s1-t2 {
+    width:100px;
+    height:110px;
+    left:70px;
+    top:185px;
+    z-index:3;
+}
+
+
+/*底部的动画箭头*/
 @keyframes tipmove{
     0%{bottom:10px;opacity:0}
     50%{bottom:15px;opacity:1}
