@@ -10,7 +10,7 @@ module.exports = merge(common,{
         compress: true,      //一切服务都启用gzip 压缩
         hot: true,//启用模块热替换特性，这个需要配合：webpack.HotModuleReplacementPlugin插件
         //host: '0.0.0.0', //指定一个host,默认是localhost,如果想开发的时候外部能访问,设置成0.0.0.0
-        port: 8080,
+        port: 8880,
         publicPath:'/',
         proxy: {
             "/api": {

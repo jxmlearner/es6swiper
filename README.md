@@ -445,7 +445,7 @@ resolve: {
     }
 }
 ```
-注意上面的@配置项, 当样式里面用 `@import`引入样式的时候要记得前面加个`符号
+注意上面的@配置项, 当样式里面用 `@import`引入样式的时候要记得前面加个~符号
 如：
 ```css  
 @import '~@/css/style.styl';
@@ -458,3 +458,84 @@ resolve: {
 }
 ```
 
+## 十三、处理html中引入的图片
+1. 安装`html-loader`: `yarn add html-loader -D`  [github网址](https://github.com/webpack-contrib/html-loader)
+2. 配置 `config/webpack.common.js`
+```js
+{
+    test: /\.(html)$/,
+    use: {
+        loader: 'html-loader',
+        options: {
+            attrs: ['img:src', 'img:data-src', 'audio:src', 'link:href'],
+            minimize: true,
+            root: path.resolve(__dirname, '../src/assets')                        
+        }
+    }
+}
+```
+
+## 十四、多页面入口文件处理
+`config/webpack.common.js`
+```js
+entry: {
+    index: path.resolve(__dirname,'../src/index.js'),
+    mi: path.resolve(__dirname,'../src/mi.js'),
+    festival: path.resolve(__dirname,'../src/festival.js'),
+},
+
+plugins: [
+    ...
+    new HtmlWebpackPlugin({
+        title: '首页',
+        template: 'index.html',
+        chunks:['index']
+    }),        
+    new HtmlWebpackPlugin({
+        title: '小米官网焦点图制作',
+        template: 'mi.html',
+        filename:'mi.html',
+        chunks:['mi']
+    }),
+    new HtmlWebpackPlugin({
+        title: '端午节',
+        template: 'festival.html',
+        filename:'festival.html',
+        chunks:['festival']
+    }),
+]
+```
+由于webpack的配置中使用了`html-loader`,导致.html的文件变成了正常的模板，所以页面中`<%= htmlWebpackPlugin.options.title %>`无法解析`HtmlWebpackPlugin`中定义的`title`,        
+最简单的的方式就是直接在html中定义页面标题
+
+## 十五、打包时的`dom7`错误
+![](./md/dom7error.png)               
+大致的原因是  swiper4.x或者dom7中使用了es6的语法, 而uglify压缩js不能有es6语法,所以报错,解决办法就是将swiper和dom7先用babel-loader解析(变成了es5),       
+然后再压缩就不会报错了, 修改 `config/webpack.common.js`和js `babel-loader`部分
+```js
+rules: [
+    {
+        test: /\.js$/,
+        include:[
+            path.resolve(__dirname,'../src'),
+            path.resolve(__dirname,'../node_modules/swiper'),
+            path.resolve(__dirname,'../node_modules/dom7')
+        ],
+        use: [
+            'babel-loader',
+            {
+                loader: 'eslint-loader',
+                options: {
+                    fix: true
+                }
+            }
+        ]
+    },
+]
+```
+别忘了在根目录下配置 `.babelrc`
+```json
+{
+    "presets": ["env"]
+}
+```

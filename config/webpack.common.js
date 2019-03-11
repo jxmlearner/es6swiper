@@ -5,7 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
     entry: {
         index: path.resolve(__dirname,'../src/index.js'),
-        mi: path.resolve(__dirname,'../src/mi.js')
+        mi: path.resolve(__dirname,'../src/mi.js'),
+        festival: path.resolve(__dirname,'../src/festival.js'),
     },
     output: {
         filename: '[name].[hash:8].bundle.js',
@@ -15,7 +16,11 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                include:[
+                    path.resolve(__dirname,'../src'),
+                    path.resolve(__dirname,'../node_modules/swiper'),
+                    path.resolve(__dirname,'../node_modules/dom7')
+                ],
                 use: [
                     'babel-loader',
                     {
@@ -29,6 +34,17 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [ 'file-loader' ]
+            },
+            {
+                test: /\.(html)$/,
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        attrs: ['img:src', 'img:data-src', 'audio:src', 'link:href'],
+                        minimize: true,
+                        root: path.resolve(__dirname, '../src/assets')                        
+                    }
+                }
             }
         ]
     },
@@ -36,12 +52,21 @@ module.exports = {
         new CleanWebpackPlugin(['dist'],{root: path.resolve(__dirname, '../')}),       
         new HtmlWebpackPlugin({
             title: '首页',
-            template: 'index.html'
+            template: 'index.html',
+            chunks:['index']
         }),        
         new HtmlWebpackPlugin({
             title: '小米官网焦点图制作',
-            template: 'mi.html'
-        })        
+            template: 'mi.html',
+            filename: 'mi.html',
+            chunks:['mi']
+        }),
+        new HtmlWebpackPlugin({
+            title: '端午节',
+            template: 'festival.html',
+            filename:'festival.html',
+            chunks:['festival']
+        }),         
     ],
     resolve: {
         alias: {
