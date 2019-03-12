@@ -1,4 +1,5 @@
 @import './common.styl'
+@import './animate.css' 
 
 *{margin: 0; padding: 0;}
 html,body {height: 100%;}
@@ -29,8 +30,9 @@ img {
     opacity: 1;
 }
 
-.swiper-slide>img {
+.swiper-slide img {
     position: absolute;
+    opacity: 0;        /*动画的初始状态,都隐藏起来*/
 }
 /*第一屏*/
 .page1 .flower {  /*花*/
@@ -145,6 +147,7 @@ img {
     left:p2r(200);
     top:p2r(390);
     z-index:3;
+    opacity: 0;     /*动画的初始状态,隐藏起来*/
     p {
         width:15px;
         color:#b60927; 
@@ -164,6 +167,7 @@ img {
     line-height: p2r(90);
     font-weight: bold;
     z-index:3;
+    opacity: 0;     /*动画的初始状态,隐藏起来*/
 }
 
 /*底部的动画箭头*/
@@ -182,3 +186,76 @@ img {
     z-index:999; 
     animation: tipmove 1.5s infinite ease-in-out;
 }
+
+
+/*第一屏动画*/
+.page1.animate {
+    // img {
+    //     opacity: 0;  /* 动画开始之前都隐藏不显示 */
+    // }
+    .flower {  /* 花 */    
+        animation: fadeInLeft .5s ease forwards
+    }
+    .s1 {
+        animation: fadeIn .5s .5s forwards
+    }
+    .s1-t1 {
+        animation: bounceIn .5s 1s forwards
+    }
+    .s1-t2 {
+        animation: fadeIn .5s 1.5s forwards
+    }
+} 
+
+/*第二屏动画*/
+.page2.animate {
+    .s2-i1 {
+        animation: fadeInDown .5s forwards
+    }
+    .s2-i2 {
+        animation: fadeInUp .5s .5s forwards
+    }
+    .s2-i3 {
+        animation: fadeInLeft .5s 1s forwards
+    }
+    .s2-i4 {
+        animation: fadeInRight .5s 1.5s forwards
+    }
+    .s2-i5 {
+        animation: fadeInLeft .5s 2s forwards
+    }
+} 
+/*第三屏动画*/
+.page3.animate {
+    .s3-i1 {
+        animation: fadeInDown .5s forwards
+    }
+    .s3-i2 {
+        animation: fadeInUp .5s .5s forwards
+    }
+    .s3-i3 {
+        animation: fadeInLeft .5s 1s forwards
+    }
+    .s3-i4 {
+        animation: fadeInRight .5s 1.5s forwards
+    }
+    .s3-i5 {
+        animation: fadeInLeft .5s 2s forwards
+    }
+}
+
+/*第四屏动画*/
+.page4.animate {
+    .flower {  /* 花 */    
+        animation: fadeInLeft .5s ease forwards
+    }
+    .s1 {
+        animation: fadeIn .5s .5s forwards
+    }
+    .poem {
+        animation: fadeInLeft .5s 1s forwards
+    }
+    .fes-tit {
+        animation: fadeInRight .5s 1s forwards
+    }
+} 

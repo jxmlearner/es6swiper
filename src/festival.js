@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import Swiper from 'swiper' // swiper模块
 
 import 'swiper/dist/css/swiper.css' // swiper的样式
@@ -11,7 +12,16 @@ new Swiper('.swiper-container', {
   mousewheel: true,
   on: {
     slideChangeTransitionEnd: function () {
-      // swiperAnimate(this);
+      // console.log(this)
+      let index = this.activeIndex
+      console.log(index)
+      $('.swiper-slide').eq(index).addClass('animate').siblings().removeClass('animate')
+    //   if (index === 2) {
+    //     $('.swiper-slide').eq(index).addClass('swiper-no-swiping')
+    //   }
+    },
+    init: function () {
+      $('.swiper-slide').eq(0).addClass('animate')
     }
   }
 })
