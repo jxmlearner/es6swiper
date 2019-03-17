@@ -20,7 +20,7 @@ new Swiper('.swiper-container', {
     //     $('.swiper-slide').eq(index).addClass('swiper-no-swiping')
     //   }
     },
-    init: function () {
+    init: function () { // 初始化完成之后让第一项增加animate类
       $('.swiper-slide').eq(0).addClass('animate')
     }
   }

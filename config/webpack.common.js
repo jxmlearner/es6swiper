@@ -6,7 +6,8 @@ module.exports = {
     entry: {
         index: path.resolve(__dirname,'../src/index.js'),
         mi: path.resolve(__dirname,'../src/mi.js'),
-        festival: path.resolve(__dirname,'../src/festival.js'),
+        festival: path.resolve(__dirname,'../src/festival.js'),     //端午
+        news: path.resolve(__dirname,'../src/news.js'),             //腾讯新闻
     },
     output: {
         filename: '[name].[hash:8].bundle.js',
@@ -66,6 +67,12 @@ module.exports = {
             template: 'festival.html',
             filename:'festival.html',
             chunks:['festival']
+        }),         
+        new HtmlWebpackPlugin({
+            title: '腾讯新闻',
+            template: 'news.html',
+            filename:'news.html',
+            chunks:['news']
         }),         
     ],
     resolve: {
