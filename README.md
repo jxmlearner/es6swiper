@@ -576,3 +576,21 @@ bg(imgurl)
   background: url(imgurl) no-repeat center / 100% 100%;
   position: absolute;
 ```
+
+## 十七、复制静态资源  使用`copy-webpack-plugin`插件
++ 安装：`yarn add -D copy-webpack-plugin`
++ 修改 `config/webpack.common.js`
+```js
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+const config = {
+  plugins: [
+    new CopyWebpackPlugin([
+        {
+            from: path.resolve(__dirname, '../src/static'),
+            to: path.resolve(__dirname, '../dist/static') 
+        }
+    ])
+  ]
+}
+```

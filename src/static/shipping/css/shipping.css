@@ -1,0 +1,252 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+body {
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+	max-width: 100%;
+	display: inline-block;
+}
+
+#shipping {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.66);
+}
+
+#shipping #rotate-swiper {
+	height: 100%;
+}
+
+#shipping .rotate-slide {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#shipping .block {
+	width: calc(100% - 34px);
+	margin-left: 17px;
+	height: 82%;
+	margin-top: 12%;
+	transform-origin: 0 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	border-radius: 0.5em;
+	background: #fff;
+}
+
+#shipping .block .header {
+	background: linear-gradient(to right,#52b4fc,#0c90f2);
+	color: #fff;
+}
+
+#shipping .block .header h3 {
+	text-align: center;
+	font-size: 1em;
+	padding: 0.7em 0;
+	font-weight: normal;
+	margin: 0;
+}
+
+#shipping .block .header .top-info {
+	padding: 0 4%;
+	box-sizing: border-box;
+}
+
+#shipping .block .header .img {
+	width: 18%;
+	float: left;
+}
+
+#shipping .block .header .txt {
+	font-size: 0.7em;
+	width: 70%;
+	float: left;
+	margin-left: 3%;
+}
+
+#shipping .block .header .txt p {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: 0;
+	margin-bottom: 0.6em;
+	letter-spacing: 0.1em;
+}
+
+#shipping .block .header .txt p.last {
+	font-size: 1.3em;
+}
+
+#shipping .block .header .icon {
+	width: 4%;
+	float: right;
+}
+
+#shipping .block .header .icon i {
+	margin-top: 1em;
+	display: block;
+}
+
+#shipping .block .body {
+	flex: 1;
+	overflow: hidden;
+}
+
+#shipping .block .body .swiper-container {
+	height: 100%;
+}
+
+#shipping .block .body .swiper-slide {
+	height: auto;
+}
+
+#shipping .block .body .swiper-slide ul {
+	padding: 1em 0;
+}
+
+#shipping .block .body .swiper-slide li {
+	padding: 0.7em 0;
+	position: relative;
+	list-style: none;
+	z-index: 10;
+}
+
+#shipping .block .body .swiper-slide li:after {
+	content: '';
+	position: absolute;
+	z-index: 9;
+	left: 20%;
+	top: 0;
+	border-left: 1px solid #ddd;
+	height: 100%;
+}
+
+#shipping .block .body .swiper-slide li:first-child:after {
+	height: 50%;
+	top: 50%;
+}
+
+#shipping .block .body .swiper-slide li:last-child:after {
+	height: 50%;
+}
+
+#shipping .block .body .swiper-slide li {
+	display: table;
+	width: 100%;
+}
+
+#shipping .block .body .swiper-slide li div {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
+}
+
+#shipping .block .body .swiper-slide li div:first-child {
+	width: 15%;
+	padding-left: 3%;
+	font-size: 0.8em;
+	text-align: center;
+}
+
+#shipping .block .body .swiper-slide li div span {
+	display: block;
+	font-size: 0.8em;
+}
+
+#shipping .block .body .swiper-slide li div:nth-child(2) {
+	width: 10%;
+	text-align: center;
+}
+
+#shipping .block .body .swiper-slide li div:nth-child(2) i {
+	width: 5px;
+	height: 5px;
+	background: #ddd;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+	z-index: 10;
+}
+
+#shipping .block .body .swiper-slide li.big-icon div:nth-child(2) i {
+	border: 1px solid #ddd;
+	width: 2em;
+	height: 2em;
+	background: #fff;
+	color: #ccc;
+}
+
+#shipping .block .body .swiper-slide li.big-icon div:nth-child(2) i:before {
+	font-size: 1.2em;
+	margin-top: 0.3em;
+	display: block;
+}
+
+#shipping .block .body .swiper-slide li div:last-child {
+	padding-left: 2%;
+}
+
+#shipping .block .footer {
+	line-height: 4;
+	font-size: 0.7em;
+	text-align: center;
+	border-top: 1px solid #eee;
+}
+
+#shipping .swiper-pagination {
+	top: 3%;
+	bottom: auto;
+}
+
+#shipping .swiper-pagination .swiper-pagination-bullet,#shipping .swiper-pagination .swiper-pagination-bullet-active {
+	background: #fff;
+}
+
+#shipping .close-btn {
+	height: 3em;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	color: #fff;
+	z-index: 30;
+}
+
+#shipping .close-btn i:before {
+	font-size: 2em;
+	padding: 0.1em;
+	border: 2px solid #fff;
+	border-radius: 100%;
+	font-weight: lighter;
+}
+
+#show-shipping {
+	background: #0c90f2;
+	color: #fff;
+	text-align: center;
+	width: 50%;
+	margin-left: 25%;
+	height: 6vh;
+	line-height: 6vh;
+	margin-top: 47vh;
+	border-radius: 5px;
+}		
+			

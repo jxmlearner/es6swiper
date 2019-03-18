@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -73,7 +74,13 @@ module.exports = {
             template: 'news.html',
             filename:'news.html',
             chunks:['news']
-        }),         
+        }),  
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, '../src/static'),
+                to: path.resolve(__dirname, '../dist/static') 
+            }
+        ])       
     ],
     resolve: {
         alias: {

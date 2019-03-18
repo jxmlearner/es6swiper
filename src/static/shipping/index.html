@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>淘宝物流</title>
+<meta name="viewport" content="initial-scale=1">
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" href="css/shipping.css">
+<link rel="stylesheet" type="text/css" href="font/iconfont.css">
+</head>
+<body>
+<div id="shipping">
+  <div class="swiper-container" id="rotate-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide rotate-slide">
+        <div class="block">
+          <div class="header">
+            <h3>已揽件</h3>
+            <div class="top-info clearfix"><div class="img"><img src="img/pic.jpg"></div>
+              <div class="txt"><p>第2件半价，麻辣小龙虾熟食 十三香鲜活现做1.8斤装香辣味</p><p>顺丰快递:3333444455556</p><p class="last">预计明日送达</p></div>
+              <div class="icon"><i class="iconfont icon-xiayiyeqianjinchakangengduo"></i></div>
+            </div>
+          </div>
+          <div class="body"><div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"></div></div></div></div>
+          <div class="footer">本数据由菜鸟裹裹提供</div>
+        </div>
+      </div>
+      <div class="swiper-slide rotate-slide">
+        <div class="block">
+          <div class="header">
+            <h3>已揽件</h3>
+            <div class="top-info clearfix"><div class="img"><img src="img/pic.jpg"></div>
+              <div class="txt"><p>第2件半价，麻辣小龙虾熟食 十三香鲜活现做1.8斤装香辣味</p><p>顺丰快递:3333444455556</p><p class="last">预计明日送达</p></div>
+              <div class="icon"><i class="iconfont icon-xiayiyeqianjinchakangengduo"></i></div>
+            </div>
+          </div>
+          <div class="body"><div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"></div></div></div></div>
+          <div class="footer">本数据由菜鸟裹裹提供</div>
+        </div>
+      </div>
+      <div class="swiper-slide rotate-slide">
+        <div class="block">
+          <div class="header">
+            <h3>已揽件</h3>
+            <div class="top-info clearfix"><div class="img"><img src="img/pic.jpg"></div>
+              <div class="txt"><p>第2件半价，麻辣小龙虾熟食 十三香鲜活现做1.8斤装香辣味</p><p>顺丰快递:3333444455556</p><p class="last">预计明日送达</p></div>
+              <div class="icon"><i class="iconfont icon-xiayiyeqianjinchakangengduo"></i></div>
+            </div>
+          </div>
+          <div class="body"><div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"></div></div></div></div>
+          <div class="footer">本数据由菜鸟裹裹提供</div>
+        </div>
+      </div>
+      <div class="swiper-slide rotate-slide">
+        <div class="block">
+          <div class="header">
+            <h3>已揽件</h3>
+            <div class="top-info clearfix"><div class="img"><img src="img/pic.jpg"></div>
+              <div class="txt"><p>第2件半价，麻辣小龙虾熟食 十三香鲜活现做1.8斤装香辣味</p><p>顺丰快递:3333444455556</p><p class="last">预计明日送达</p></div>
+              <div class="icon"><i class="iconfont icon-xiayiyeqianjinchakangengduo"></i></div>
+            </div>
+          </div>
+          <div class="body"><div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"></div></div></div></div>
+          <div class="footer">本数据由菜鸟裹裹提供</div>
+        </div>
+      </div>
+      <div class="swiper-slide rotate-slide">
+        <div class="block">
+          <div class="header">
+            <h3>已揽件</h3>
+            <div class="top-info clearfix"><div class="img"><img src="img/pic.jpg"></div>
+              <div class="txt"><p>第2件半价，麻辣小龙虾熟食 十三香鲜活现做1.8斤装香辣味</p><p>顺丰快递:3333444455556</p><p class="last">预计明日送达</p></div>
+              <div class="icon"><i class="iconfont icon-xiayiyeqianjinchakangengduo"></i></div>
+            </div>
+          </div>
+          <div class="body"><div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"></div></div></div></div>
+          <div class="footer">本数据由菜鸟裹裹提供</div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination" id="rotate-pagination"></div>
+  </div>
+  <div class="close-btn"><i class="iconfont icon-cuowuguanbiquxiao"></i></div>
+</div>
+<div id="show-shipping">查看物流</div>
+<script src="js/swiper.min.js"></script> 
+<script>
+    var swiper = new Swiper('#rotate-swiper', {
+    	pagination: {
+    		el: '#rotate-pagination',
+    	},
+      //runCallbacksOnInit: true,
+      /*
+        对于slide的progress属性，活动的那个为0，其他的依次减1。例：如果一共有6个slide，活动的是第三个，从第一个到第六个的progress属性分别是：2、1、0、-1、-2、-3。
+        对于swiper的progress属性，活动的slide在最左（上）边时为0，活动的slide在最右（下）边时为1，其他情况平分。
+        例：有6个slide，当活动的是第三个时swiper的progress属性是0.4，当活动的是第五个时swiper的progress属性是0.8。
+      */
+    	watchSlidesProgress: true,  // 开启这个参数来计算每个slide的progress(进度、进程)，Swiper的progress无需设置即开启。
+    	on: {
+    		progress: function() {
+    			for (var i = 1; i < this.slides.length; i++) {
+    				if (this.slides[i].progress <= 0) {
+    					this.slides.eq(i).find(".block").transition(0)
+    					this.slides.eq(i).find(".block").transform("rotateZ(" + 13 * Math.abs(this.slides[i].progress) + "deg) translate3d(0, 0, 0)")
+    				}
+    			}
+    		},
+        setTransition: function(transition) {    // 回调函数，每当设置Swiper开始过渡动画时执行。transtion获取到的是Swiper的speed值。
+    			for (var i = 1; i < this.slides.length; i++) {
+    				if (this.slides[i].progress <= 0) {
+              this.slides.eq(i).find(".block").transition(transition)   //设置过滤时长
+              rot = 13 * Math.abs(this.slides[i].progress);
+    					this.slides.eq(i).find(".block").transform("rotateZ(" + rot + "deg) translate3d(0, 0, 0)")
+    				}
+    			}
+    		},
+    		init: function() {
+    			this.emit('transitionEnd');
+    		},
+    		transitionEnd: function() {
+    			if (this.slides[this.activeIndex].contentLoaded == undefined) {
+    				this.slides.eq(this.activeIndex).find('.swiper-slide').html('<ul><li class="big-icon"><div>20:30<span>07-20</span></div><div><i class="iconfont icon-yunshuzhongwuliu"></i></div><div>您的包裹已送达</div></li><li><div>20:30<span>07-20</span></div><div><i></i></div><div>您的包裹已到达某地</div></li><li><div>20:30<span>07-20</span></div><div><i></i></div><div>您的包裹已到达某地</div></li><li class="big-icon"><div>20:30<span>07-20</span></div><div><i class="iconfont icon-yunshuzhongwuliu"></i></div><div>您的包裹已出库</div></li><li><div>20:30<span>07-20</span></div><div><i></i></div><div>您的包裹已出库</div></li><li><div>20:30<span>07-20</span></div><div><i></i></div><div>您的包裹已出库</div></li><li><div>20:30<span>07-20</span></div><div><i></i></div><div>您的包裹已出库</div></li><li class="big-icon"><div>20:30<span>07-20</span></div><div><i class="iconfont icon-yunshuzhongwuliu"></i></div><div>您的包裹已出库</div></li><li><div>20:30<span>07-20</span></div><div><i></i></div><div>您的包裹已打包</div></li><li><div>20:30<span>07-20</span></div><div><i></i></div><div>您的包裹已出库</div></li><li><div>20:30<span>07-20</span></div><div><i></i></div><div>您的包裹已出库</div></li><li class="big-icon"><div>20:30<span>07-20</span></div><div><i class="iconfont icon-yunshuzhongwuliu"></i></div><div>您的订单已发货</div></li></ul>');
+    				new Swiper(this.slides.eq(this.activeIndex).find('.swiper-container'), {
+    					direction: 'vertical',
+    					slidesPerView: 'auto',
+    					freeMode: true,
+    				});
+    				this.slides[this.activeIndex].contentLoaded = true;
+    			}
+
+    		},
+    	},
+    });
+	document.querySelector(".close-btn").onclick=function(){
+		document.querySelector("#shipping").style.display='none';
+		}
+	document.querySelector("#show-shipping").onclick=function(){
+		document.querySelector("#shipping").style.display='block';
+		}	
+		
+</script>
+</body>
+</html>
