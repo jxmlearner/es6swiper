@@ -37,6 +37,7 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
         'no-console': 'off',
         'no-new':'off',
+        'space-before-function-paren':'off',
         "indent":[0,4]
     }
 }

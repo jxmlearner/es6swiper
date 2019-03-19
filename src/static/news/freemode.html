@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<link rel="stylesheet" href="css/swiper.min.css">
+<script src="js/jquery-1.10.1.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<style>
+* {
+	margin: 0; padding: 0; box-sizing: border-box;
+}
+html,body {
+	height: 100%;
+}
+
+.top-header {
+	height: 43px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background:#fdfdfc;
+	font:12px/40px hiragino sans gb,microsoft yahei,simsun;
+	box-shadow:3px 3px 3px rgba(0,0,0,0.2);
+}
+.top-header .swiper-slide {
+	text-align: center;
+	line-height: 40px;
+	width: auto;
+}
+
+</style>
+</head>
+<body>
+<div class="top-header swiper-container">
+	<div class="top-line"></div>
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">新闻</div>
+		<div class="swiper-slide">财经</div>
+		<div class="swiper-slide">娱乐</div>
+		<div class="swiper-slide">体育</div>
+		<div class="swiper-slide">订阅</div>
+		<div class="swiper-slide">微博</div>
+		<div class="swiper-slide">空间</div>
+		<div class="swiper-slide">书城</div>
+	</div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    new Swiper('.top-header', {
+        slidesPerView: '6',
+        freeMode: true,
+        spaceBetween: 0
+    })
+}
+
+</script>
+</body>
+</html>
