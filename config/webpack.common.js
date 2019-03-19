@@ -9,6 +9,7 @@ module.exports = {
         mi: path.resolve(__dirname,'../src/mi.js'),
         festival: path.resolve(__dirname,'../src/festival.js'),     //端午
         news: path.resolve(__dirname,'../src/news.js'),             //腾讯新闻
+        fresh: path.resolve(__dirname,'../src/fresh.js'),           //每日优鲜
     },
     output: {
         filename: '[name].[hash:8].bundle.js',
@@ -75,6 +76,12 @@ module.exports = {
             filename:'news.html',
             chunks:['news']
         }),  
+        new HtmlWebpackPlugin({
+            title: '每日优鲜',
+            template: 'fresh.html',
+            filename:'fresh.html',
+            chunks:['fresh']
+        }),
         new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, '../src/static'),
