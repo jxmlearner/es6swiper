@@ -71,6 +71,24 @@ module.exports = merge(common,{
         })
     ],
     optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendors: {
+                    name: "vendors",
+                    chunks: "all", 
+                    minChunks: 2,
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: 0 
+                },
+                styles: {
+                    name: 'styles',
+                    test: /\.css$|\.styl$/,
+                    chunks: 'all',
+                    enforce: true,
+                    priority: 10
+                }
+            }
+        },
         minimizer: [
             new UglifyJsPlugin({     //压缩js
                 cache: true,

@@ -4,13 +4,14 @@ import 'swiper/dist/css/swiper.css'
 import './assets/css/fresh.styl'
 
 window.onload = function() {
-    var barwidth = 36, // 导航粉色条的长度默认36px
-        tSpeed = 300, // 切换的速度
-        navSlideWidth = 50, // 默认导航条单个项的宽度
-        navSum = 520,
-        navWidth = 0, clientWidth,
-        bar,
-        topBar
+    // var barwidth = 36 // 导航粉色条的长度默认36px
+    var tSpeed = 300 // 切换的速度
+    var navSlideWidth = 50 // 默认导航条单个项的宽度
+    var navSum = 520
+    var navWidth = 0
+    var clientWidth
+    var bar
+    // var topBar
     var clickIndex = 0
     var navSwiper = new Swiper('#nav', {
         slidesPerView: '6',
@@ -29,7 +30,7 @@ window.onload = function() {
                for (let i = 0; i < this.slides.length; i++) {
                    navWidth += parseInt(this.slides.eq(i).css('width'))
                }
-               topBar = this.$el.parents('body').find('#top') // 页头
+               // topBar = this.$el.parents('body').find('#top') // 页头
             },
             tap: function(e) {
                 clickIndex = this.clickedIndex

@@ -615,3 +615,8 @@ background:linear-gradient(90deg,rgba(15,166,234,1) 0,rgba(89,204,24,1) 10%,rgba
 	rectObject.width：是元素自身的宽
 	rectObject.height是元素自身的高
   ```
+
+## 十八、 webpack分包工具SplitChunksPlugin
+上面的代码多页面执行 `npm run build`之后，生成的代码有很多重复项, 如jquery, 多个模块都使用到了,但是每一个模块打包之后都有一份jquery,        
+swiper也是多个文件用到, 而生成的代码都有重复的swiper代码, 包括swiper的样式亦是如此      
+所以类似这种共用的模块, 可以打包成单独的chunk, 既减少打包后的代码体积, 也可以部署后方便独立chunk的缓存起来...
