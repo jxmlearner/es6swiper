@@ -595,4 +595,23 @@ const config = {
 }
 ```
 
-+ [css linear-gradient 讲解](https://www.w3cplus.com/css3/do-you-really-understand-css-linear-gradients.html)
++ [css linear-gradient 讲解](https://www.w3cplus.com/css3/do-you-really-understand-css-linear-gradients.html)   竖直线0度,顺时针方向为角度值
+```css
+background:linear-gradient(90deg,rgba(15,166,234,1) 0,rgba(89,204,24,1) 10%,rgba(15,166,234,1) 60%,rgba(15,166,234,1) 100%);
+```
+
++ 知识点临时记：
+  - jquery的offset()是返回或设置元素居于文档的位置(left,top)
+  - js中getBoundingClientRect()方法 也与上面的方法类似  [参考](https://blog.csdn.net/gao_xu_520/article/details/80365799)
+  ```js
+  <div id="box"></div>
+    var object=document.getElementById('box');  
+    var rectObject = object.getBoundingClientRect();
+ 
+	rectObject.top：元素上边到视窗上边的距离;
+	rectObject.right：元素右边到视窗左边的距离;
+	rectObject.bottom：元素下边到视窗上边的距离;
+	rectObject.left：元素左边到视窗左边的距离;
+	rectObject.width：是元素自身的宽
+	rectObject.height是元素自身的高
+  ```
