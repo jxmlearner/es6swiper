@@ -619,4 +619,72 @@ background:linear-gradient(90deg,rgba(15,166,234,1) 0,rgba(89,204,24,1) 10%,rgba
 ## 十八、 webpack分包工具SplitChunksPlugin
 上面的代码多页面执行 `npm run build`之后，生成的代码有很多重复项, 如jquery, 多个模块都使用到了,但是每一个模块打包之后都有一份jquery,        
 swiper也是多个文件用到, 而生成的代码都有重复的swiper代码, 包括swiper的样式亦是如此      
-所以类似这种共用的模块, 可以打包成单独的chunk, 既减少打包后的代码体积, 也可以部署后方便独立chunk的缓存起来...
+所以类似这种共用的模块, 可以打包成单独的chunk, 既减少打包后的代码体积, 也可以部署后方便独立chunk的缓存起来...   [参考文章](https://juejin.im/post/5c00916f5188254caf186f80?)[参考2](https://juejin.im/post/5af1677c6fb9a07ab508dabb)      
+在`config/webpack.prod.js`中增加配置项
+```js
+optimization: {
+    splitChunks: {
+        cacheGroups: {
+            vendors: {
+                name: "vendors",
+                chunks: "all", 
+                minChunks: 2,
+                test: /[\\/]node_modules[\\/]/,
+                priority: 0 
+            },
+            styles: {
+                name: 'styles',
+                test: /\.css$|\.styl$/,
+                chunks: 'all',
+                enforce: true,
+                minChunks: 2,
+                priority: 10
+            }
+        }
+    },
+    minimizer: [
+        new UglifyJsPlugin({     //压缩js
+            cache: true,
+            parallel: true,
+            sourceMap: true
+        }),
+        new optimizeCss()      //压缩css
+    ]
+}
+```
+同时 htmlwebpackplugin要引入上面生成的chunk, vendors和styles （这是生产环境需要处理的），所以把htmlwebpackplugin部分移到 webpack.prod.js作修改,  
+webpack.dev.js中要留下一份(开发环境不需要打包成独立的公式js和样式)
+```js
+plugins: [
+    ...
+    new HtmlWebpackPlugin({
+        title: '首页',
+        template: 'index.html',
+        chunks:['index','styles']
+    }),        
+    new HtmlWebpackPlugin({
+        title: '小米官网焦点图制作',
+        template: 'mi.html',
+        filename: 'mi.html',
+        chunks:['mi','styles']
+    }),
+    new HtmlWebpackPlugin({
+        title: '端午节',
+        template: 'festival.html',
+        filename:'festival.html',
+        chunks:['festival','styles','vendors']
+    }),         
+    new HtmlWebpackPlugin({
+        title: '腾讯新闻',
+        template: 'news.html',
+        filename:'news.html',
+        chunks:['news','styles','vendors']
+    }),  
+    new HtmlWebpackPlugin({
+        title: '每日优鲜',
+        template: 'fresh.html',
+        filename:'fresh.html',
+        chunks:['fresh','styles','vendors']
+    })
+]
+```

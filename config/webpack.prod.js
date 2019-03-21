@@ -3,6 +3,7 @@ const common = require('./webpack.common')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");      // 把样式打包成文件只在生产环境下使用
 const optimizeCss = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = merge(common,{
     mode: 'production',
@@ -68,6 +69,35 @@ module.exports = merge(common,{
             // both options are optional
             filename: '[name].[hash].css',
             chunkFilename: '[id].[hash].css',
+        }),
+        new HtmlWebpackPlugin({
+            title: '首页',
+            template: 'index.html',
+            chunks:['index','styles']
+        }),        
+        new HtmlWebpackPlugin({
+            title: '小米官网焦点图制作',
+            template: 'mi.html',
+            filename: 'mi.html',
+            chunks:['mi','styles']
+        }),
+        new HtmlWebpackPlugin({
+            title: '端午节',
+            template: 'festival.html',
+            filename:'festival.html',
+            chunks:['festival','styles','vendors']
+        }),         
+        new HtmlWebpackPlugin({
+            title: '腾讯新闻',
+            template: 'news.html',
+            filename:'news.html',
+            chunks:['news','styles','vendors']
+        }),  
+        new HtmlWebpackPlugin({
+            title: '每日优鲜',
+            template: 'fresh.html',
+            filename:'fresh.html',
+            chunks:['fresh','styles','vendors']
         })
     ],
     optimization: {
@@ -85,6 +115,7 @@ module.exports = merge(common,{
                     test: /\.css$|\.styl$/,
                     chunks: 'all',
                     enforce: true,
+                    minChunks: 2,
                     priority: 10
                 }
             }
